@@ -29,3 +29,30 @@ app.all("*", createRequestHandler({ build }));
 app.listen(3000, () => {
   console.log("App listening on http://localhost:3000");
 });
+
+const mysql = require('mysql');
+
+const connection = mysql.createConnection({
+                                              host: 'localhost',
+                                              user: 'root',
+                                              password: '323849',
+                                              database: 'SellingSetup'
+                                          });
+
+// Connect to the database
+connection.connect(function(err) {
+    if (err) {
+        console.error('Error connecting to database: ' + err.stack);
+        return;
+    }
+
+    console.log('Connected as id ' + connection.threadId);
+});
+
+connection.query('SELECT * FROM SellingSetup', function(err, results, fields) {
+    if (err) throw err;
+
+    console.log(results); // Print the results of the query.
+});
+
+connection.end();
