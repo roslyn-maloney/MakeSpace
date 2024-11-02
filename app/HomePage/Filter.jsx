@@ -1,7 +1,9 @@
 export default function Filter(){
     return(
         <div>
-            <button> </button>
+            <button> Something </button>
+            <button> Somthing </button>
+            <button> Something </button>
         </div>
     );
 }
